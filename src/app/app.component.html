@@ -382,7 +382,21 @@
   <!-- Next Steps -->
   <h2>Next Steps</h2>
   <p>What do you want to do next with your app?</p>
+      <button class="btn btn-primary">BootstraP</button>
 
+      <div class="container">
+        <nav class="navbar navbar-default">
+          <ul class="nav navbar-nav">
+            <li>
+              <a [routerLink]="[ '/list' ]" routerLinkActive="active">List</a>
+            </li>
+            <li>
+              <a [routerLink]="[ '/create' ]" routerLinkActive="active">Create</a>
+            </li>
+          </ul>
+        </nav>
+        <router-outlet></router-outlet>
+      </div>
   <input type="hidden" #selection>
 
   <div class="card-container">
