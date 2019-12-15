@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl} from '@angular/forms'
+import { FormGroup, Validators, FormBuilder} from '@angular/forms'
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-create-employee',
@@ -8,18 +9,25 @@ import { FormGroup, FormControl} from '@angular/forms'
 })
 export class CreateEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
-  constructor() { }
+  fullNameLength = 0;
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.employeeForm = new FormGroup({
-      fullName: new FormControl(),
-      eMail: new FormControl(),
-        skills: new FormGroup({
-          skillName: new FormControl(),
-          experienceInYears: new FormControl(),
-          proficiency: new FormControl()
+    this.employeeForm = this.fb.group({
+      fullName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
+      eMail: [''],
+        skills: this.fb.group({
+          skillName: [''],
+          experienceInYears: [''],
+          proficiency: ['beginner']
         })
     });
+
+    this.employeeForm.valueChanges.subscribe(( value: any ) => 
+    {  
+      console.log(JSON.stringify);
+    });
+
   }
 
   onLoadDataClick(): void {
