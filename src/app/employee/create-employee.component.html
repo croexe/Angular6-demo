@@ -9,7 +9,6 @@
           <label class="col-sm-2 control-label" for="fullName">Full Name</label>
           <div class="col-sm-8">
             <input id="fullName" formControlName="fullName" type="text" class="form-control">
-            <label>{{ fullNameLength }}</label>
             <span class="help-block" *ngIf="employeeForm.get('fullName').errors && 
             (employeeForm.get('fullName').touched || employeeForm.get('fullName').dirty)" >
               <span *ngIf="employeeForm.get('fullName').errors.required">Full Name is Required!</span>

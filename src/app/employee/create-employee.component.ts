@@ -22,24 +22,21 @@ export class CreateEmployeeComponent implements OnInit {
           proficiency: ['beginner']
         })
     });
+  }
 
-    this.employeeForm.valueChanges.subscribe(( value: any ) => 
-    {  
-      console.log(JSON.stringify);
-    });
-
+  logKeyValuePairs(group: FormGroup) : void {
+    console.log(Object.keys(group.controls).forEach((key: string) =>{
+      const abstractControl = group.get(key);
+      if(abstractControl instanceof FormGroup){
+        this.logKeyValuePairs(abstractControl);
+      } else {
+        console.log('Key= ' + key + ' Value = ' + abstractControl.value);
+      }
+    } ));
   }
 
   onLoadDataClick(): void {
-    this.employeeForm.setValue({
-      fullName: 'Irinej Tech',
-      eMail: 'Irinejs@gmail.com',
-      skills: {
-        skillName: 'C#',
-        experienceInYears: 3,
-        proficiency: 'intermidiete'
-      }
-    })
+    this.logKeyValuePairs(this.employeeForm);
   }
 
   onSubmit(): void {
