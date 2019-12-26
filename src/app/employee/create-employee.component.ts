@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder} from '@angular/forms'
+import { FormGroup, Validators, FormBuilder, FormControl} from '@angular/forms'
 
 @Component({
   selector: 'app-create-employee',
@@ -44,8 +44,9 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit() {
     this.employeeForm = this.fb.group({
       fullName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
+      contactPreference: ['Email'],
       email: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: [''],
         skills: this.fb.group({
           skillName: ['', Validators.required],
           experienceInYears: ['', Validators.required],
@@ -57,6 +58,16 @@ export class CreateEmployeeComponent implements OnInit {
     })
   }
 
+  onConctactPreferenceChange(selectedValue : string){
+    const phoneControle = this.employeeForm.get('phone');
+    if(selectedValue === 'phone'){
+      phoneControle.setValidators(Validators.required);
+    } else {
+      phoneControle.clearValidators();
+    }
+      phoneControle.updateValueAndValidity();
+    }
+  
   logValidationErrors(group: FormGroup = this.employeeForm) : void {
     Object.keys(group.controls).forEach((key: string) =>{
       const abstractControl = group.get(key);
