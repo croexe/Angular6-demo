@@ -71,19 +71,19 @@
             
 
             <div class="form-group" [ngClass]="{'has-error' : formErrors.skillName}">
-              <label class="col-sm-2 control-label" for="skillName">
+              <label class="col-sm-2 control-label" [attr.for]="'skillName' + i">
                 Skill
               </label>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="skillName" placeholder="Name" formControlName="skillName"
+                <input type="text" class="form-control" [id]="'skillName' + i" formControlName="skillName"
                   (blur)="logValidationErrors()" placeholder="C#, Java, TypeScript ect ...">
                 <span class="help-block" *ngIf="formErrors.skillName">{{formErrors.skillName}}</span>
               </div>
             </div>
             <div class="form-group" [ngClass]="{'has-error' : formErrors.experienceInYears}">
-              <label class="col-sm-2 control-label" for="experienceInYears">Experience</label>
+              <label class="col-sm-2 control-label" [attr.for]="'experienceInYears' + i">Experience</label>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="experienceInYears" formControlName="experienceInYears"
+                <input type="text" class="form-control" [id]="'experienceInYears' + i" formControlName="experienceInYears"
                   (blur)="logValidationErrors()" placeholder="In Years">
                 <span class="help-block" *ngIf="formErrors.experienceInYears">{{formErrors.experienceInYears}}</span>
               </div>
