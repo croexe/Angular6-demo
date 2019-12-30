@@ -74,6 +74,10 @@ export class CreateEmployeeComponent implements OnInit {
     });
   }
 
+  addSkillButtonClick(): void{
+    (<FormArray>this.employeeForm.get('skills')).push(this.addSkillFormGroup());
+  }
+
   addSkillFormGroup(): FormGroup {
     return this.fb.group({
       skillName: ['', Validators.required],
