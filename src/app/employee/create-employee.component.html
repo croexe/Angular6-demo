@@ -62,11 +62,13 @@
 
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-4">
-            <button type="button" class="btn btn-primary" (click)="addSkillButtonClick()">Add skill</button>
+            <button type="button" class="btn btn-primary" (click)="addSkillButtonClick()"
+            [disabled]="employeeForm.get('skills').invalid">Add skill</button>
           </div> 
         </div>
 
         <div formArrayName="skills" *ngFor="let skill of employeeForm.get('skills').controls; let i = index">
+          <hr *ngIf="i>0">
           <div [formGroupName]="i">
             
 
