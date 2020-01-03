@@ -103,6 +103,10 @@ export class CreateEmployeeComponent implements OnInit {
     });
   }
 
+  removeSkillButtonClick(skillGroupIndex: number) : void {
+(<FormArray>this.employeeForm.get('skills')).removeAt(skillGroupIndex);
+  }
+
   onLoadDataClick(): void {
     const formArray = new FormArray([
       new FormControl('John', Validators.required),
