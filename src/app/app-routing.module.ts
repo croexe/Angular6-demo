@@ -1,14 +1,15 @@
-import { CreateEmployeeComponent } from './employee/create-employee.component';
-import { ListEmployeesComponent } from './employee/list-employees.component';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { HomeComponent } from './home.component';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
 
 const routes: Routes = [
-  { path: 'list', component: ListEmployeesComponent},
-  { path: 'create', component: CreateEmployeeComponent},
-  { path: '', redirectTo: '/list', pathMatch: 'full'}
+  { path: 'home', component: HomeComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
