@@ -6,14 +6,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {
-    path: 'employees',
-    children: [
-      { path: '', component: ListEmployeesComponent},
-      { path: 'create', component: CreateEmployeeComponent},
-      { path: 'edit/:id', component: CreateEmployeeComponent}
-    ]
-  }
+      { 
+        path: '', 
+        component: ListEmployeesComponent},
+      { 
+        path: 'create', 
+        component: CreateEmployeeComponent},
+      { 
+        path: 'edit/:id', 
+        component: CreateEmployeeComponent}
 ];
 
 @NgModule({

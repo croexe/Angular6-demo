@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: 'employees', loadChildren: './employee/employee.module#EmployeeModule'},
   { path: '**', component: PageNotFoundComponent}
 ];
 
